@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Beating Heart</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            overflow: hidden;
+            transform: rotate(-45deg);
+        }
+
+        .heart-container {
+            position: relative;
+        }
+
+        .heart {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: heartbeat 1s infinite;
+            cursor: pointer;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -90px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 90px;
+        }
+
+        #modal {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background-color: rgb(231, 162, 226);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInScale 0.5s ease-out forwards;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.6);
+                transform: rotate(45deg);
+                top: 10%;
+                left: 50%;
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+                transform: rotate(45deg);
+                top: 50%;
+                left: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container">
+        <div class="heart" onclick="displayLovePhrase()"></div>
+        <div id="modal">
+            <p>I LOVE YOU SO MUCH BAE!!!</p>
+            
+        </div>
+    </div>
+
+    <script>
+        function displayLovePhrase() {
+            const modal = document.getElementById('modal');
+            
+            modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+        }
+        
+
+    </script>
+</body>
+</html>
